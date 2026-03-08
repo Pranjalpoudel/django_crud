@@ -97,3 +97,42 @@ class LoginView(APIView):
             })
         except Student.DoesNotExist:
             return Response("Invalid username/password", status=status.HTTP_401_UNAUTHORIZED)
+
+# Pre-defined security lab views
+def security_demo_view(request):
+    notes = Note.objects.all()
+    use_csrf = request.GET.get('use_csrf', 'true') == 'true'
+    return render(request, 'solutions_api/vulnerability_demo.html', {
+        'notes': notes,
+        'use_csrf': use_csrf,
+    })
+
+def sql_injection_view(request):
+    from django.db import connection
+    query = request.GET.get('q', '')
+    results = []
+    if query:
+        # VULNERABLE: Direct string interpolation into raw SQL
+        cursor = connection.cursor()
+        raw_query = f"SELECT title, content FROM solutions_api_note WHERE title = '{query}'"
+        cursor.execute(raw_query)
+        results = cursor.fetchall()
+    
+    return render(request, 'solutions_api/vulnerability_demo.html', {
+        'results': results,
+        'query': query,
+        'notes': Note.objects.all()
+    })
+
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
+
+@csrf_exempt # Used purely for demonstration as requested
+def csrf_demo_view(request):
+    if request.method == 'POST':
+        # In a real app, this would be protected by CSRF. 
+        # Here we use @csrf_exempt to show what happens when it's off (success)
+        # vs when it's on (Django handles it automatically if exempt is removed).
+        message = request.POST.get('message', 'No message')
+        return HttpResponse(f"<h1>CSRF Demo Success!</h1><p>Message: {message}</p><p>Submitted by: Pranjal Poudel</p>")
+    return render(request, 'solutions_api/vulnerability_demo.html', {'use_csrf': True})

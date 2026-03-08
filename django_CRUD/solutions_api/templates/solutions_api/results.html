@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Solutions - Pranjal Poudel</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+        }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .solution-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            border: 1px solid #e2e8f0;
+        }
+        h2 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        pre {
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .output-label {
+            font-weight: bold;
+            margin-top: 16px;
+            display: block;
+            color: #64748b;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Programming Solutions Portfolio</h1>
+            <p>Submitted by: <strong>Pranjal Poudel</strong></p>
+        </header>
+
+        {% for item in results %}
+        <div class="solution-card">
+            <h2>Question {{ forloop.counter }}: {{ item.title }}</h2>
+            <p><em>{{ item.question }}</em></p>
+            
+            <span class="output-label">Logic Execution Output:</span>
+            <pre>{{ item.output }}</pre>
+        </div>
+        {% endfor %}
+
+        <footer>
+            &copy; 2026 Pranjal Poudel. Generated for Handwritten Report.
+        </footer>
+    </div>
+</body>
+</html>

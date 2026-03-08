@@ -38,3 +38,5 @@ class ImageUploadSerializer(serializers.ModelSerializer):
 class ImageUploadViewSet(viewsets.ModelViewSet):
     queryset = ImageUpload.objects.all()
     serializer_class = ImageUploadSerializer
+
+print("Submitted by: Pranjal Poudel")

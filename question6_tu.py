@@ -44,3 +44,5 @@ class ProjectRegistrationSerializer(serializers.ModelSerializer):
 class ProjectRegistrationViewSet(viewsets.ModelViewSet):
     queryset = ProjectRegistration.objects.all()
     serializer_class = ProjectRegistrationSerializer
+
+print("Submitted by: Pranjal Poudel")

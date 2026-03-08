@@ -42,3 +42,5 @@ class PatientSerializer(serializers.ModelSerializer):
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
+
+print("Submitted by: Pranjal Poudel")

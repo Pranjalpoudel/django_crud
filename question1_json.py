@@ -40,3 +40,5 @@ data["genres"].append("Programming")  # Append to genres
 updated_json = json.dumps(data, indent=4)
 print("\nUpdated JSON String:")
 print(updated_json)
+
+print("Submitted by: Pranjal Poudel")

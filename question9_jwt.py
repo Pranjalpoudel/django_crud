@@ -32,3 +32,5 @@ class LoginView(APIView):
             
         except Student.DoesNotExist:
             return Response("Invalid username/password", status=status.HTTP_401_UNAUTHORIZED)
+
+print("Submitted by: Pranjal Poudel")

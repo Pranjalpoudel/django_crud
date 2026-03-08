@@ -65,3 +65,5 @@ class AppointmentSerializer(serializers.Serializer):
         return data
 
 # Note: View would involve serializer.is_valid() and saving data.
+
+print("Submitted by: Pranjal Poudel")

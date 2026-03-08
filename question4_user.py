@@ -44,3 +44,5 @@ class UserDataSerializer(serializers.ModelSerializer):
 class UserDataViewSet(viewsets.ModelViewSet):
     queryset = UserData.objects.all()
     serializer_class = UserDataSerializer
+
+print("Submitted by: Pranjal Poudel")

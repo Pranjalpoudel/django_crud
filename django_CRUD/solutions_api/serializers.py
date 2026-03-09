@@ -71,6 +71,11 @@ class NoteSerializer(serializers.ModelSerializer):
         model = Note
         fields = '__all__'
 
+    def validate_content(self, value):
+        if len(value) < 10:
+            raise serializers.ValidationError("Content must be at least 10 characters long.")
+        return value
+
 # Q8: Appointment Serializer (No Model)
 class AppointmentSerializer(serializers.Serializer):
     name = serializers.CharField(required=True)

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: django-notes-crud
+    env: python
+    buildCommand: "./render_build.sh"
+    startCommand: "gunicorn django_CRUD.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: django_CRUD.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: "*"

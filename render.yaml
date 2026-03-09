@@ -3,7 +3,7 @@ services:
     name: django-notes-crud
     plan: free
     env: python
-    buildCommand: "./render_build.sh"
+    buildCommand: "bash ./render_build.sh"
     startCommand: "gunicorn django_CRUD.wsgi:application"
     envVars:
       - key: PYTHON_VERSION

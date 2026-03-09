@@ -21,4 +21,5 @@ urlpatterns = [
     path('security-demo/', views.security_demo_view, name='security_demo'),
     path('sql-injection/', views.sql_injection_view, name='sql_injection'),
     path('csrf-demo/', views.csrf_demo_view, name='csrf_demo'),
+    path('source-view/', views.source_view, name='source_view'),
 ]

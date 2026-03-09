@@ -136,3 +136,25 @@ def csrf_demo_view(request):
         message = request.POST.get('message', 'No message')
         return HttpResponse(f"<h1>CSRF Demo Success!</h1><p>Message: {message}</p><p>Submitted by: Pranjal Poudel</p>")
     return render(request, 'solutions_api/vulnerability_demo.html', {'use_csrf': True})
+def source_view(request):
+    import os
+    from django.conf import settings
+    
+    files_to_show = {
+        '.env': os.path.join(settings.BASE_DIR, '.env'),
+        'settings.py': os.path.join(settings.BASE_DIR, 'django_CRUD', 'settings.py'),
+        'views.py': os.path.join(settings.BASE_DIR, 'solutions_api', 'views.py'),
+        'urls.py': os.path.join(settings.BASE_DIR, 'solutions_api', 'urls.py'),
+        'template.html': os.path.join(settings.BASE_DIR, 'solutions_api', 'templates', 'solutions_api', 'vulnerability_demo.html'),
+    }
+    
+    context = []
+    for name, path in files_to_show.items():
+        try:
+            with open(path, 'r') as f:
+                content = f.read()
+            context.append({'name': name, 'path': path, 'content': content})
+        except:
+            pass
+            
+    return render(request, 'solutions_api/source_viewer.html', {'files': context})

@@ -1,6 +1,7 @@
 services:
   - type: web
     name: django-notes-crud
+    plan: free
     env: python
     buildCommand: "./render_build.sh"
     startCommand: "gunicorn django_CRUD.wsgi:application"

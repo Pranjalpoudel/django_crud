@@ -4,7 +4,7 @@ services:
     plan: free
     env: python
     buildCommand: "bash ./render_build.sh"
-    startCommand: "gunicorn django_CRUD.wsgi:application"
+    startCommand: "gunicorn --pythonpath django_CRUD django_CRUD.wsgi:application"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
